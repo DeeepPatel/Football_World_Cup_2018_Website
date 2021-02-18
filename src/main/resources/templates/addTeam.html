@@ -13,6 +13,7 @@
 <div>
     <form method="post" th:action="@{/addTeam}" th:object="${team}">
 
+        <input type="hidden" th:field="*{teamId}">
         <input type="text" th:field="*{teamName}">
         <input type="text" th:field="*{continent}">
         <input type="number" th:field="*{numGamesPlayed}">

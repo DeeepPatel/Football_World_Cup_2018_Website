@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Team implements Serializable {
 
     //dont forget to add team image
+    private Long teamId;
     @NonNull
     private String teamName;
     private String continent;
