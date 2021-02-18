@@ -16,22 +16,32 @@ public class WorldCup2018Controller {
     @Autowired
     WorldCup2018DB db;
 
+    ModelAndView mv;
+
     @GetMapping("/")
-    public String index(Model model){
-
-        model.addAttribute("team", new Team());
-
-        return "addTeam";
+    public String index(){
+        return "/home";
     }
 
-    @PostMapping("/addTeam")
-    public ModelAndView processTeam(@ModelAttribute Team team){
-
+    //Works
+    @PostMapping("/saveTeam")
+    public String processTeam(@ModelAttribute Team team){
         db.insertTeam(team.getTeamName(), team.getContinent(), team.getGamesPlayed(), team.getGamesWon(), team.getGamesDrawn(), team.getGamesLost());
-
-
-        return new ModelAndView("addTeam", "teams", db.getTeams());
+        return "redirect:displayResults";
     }
 
+    //Works
+    @GetMapping("/addTeam")
+    public String processNewTeamForm(Model model){
+        model.addAttribute("team", new Team());
+        return "/addTeam";
+    }
+
+    //Works
+    @GetMapping("/displayResults")
+    public String displayResults(Model model){
+        model.addAttribute("team", db.getTeams());
+        return "/displayResults";
+    }
 
 }
