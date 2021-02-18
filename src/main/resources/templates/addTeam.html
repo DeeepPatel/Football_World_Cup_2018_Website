@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List of all the Teams: </h1>
+
+
+
+
+<div>
+    <form method="post" th:action="@{/addTeam}" th:object="${team}">
+
+        <input type="text" th:field="*{teamName}">
+        <input type="text" th:field="*{continent}">
+        <input type="number" th:field="*{numGamesPlayed}">
+        <input type="number" th:field="*{numWon}">
+        <input type="number" th:field="*{numDrawn}">
+        <input type="number" th:field="*{numLost}"><br>
+
+        <input type="submit" value="Add Team">
+
+    </form>
+</div>
+</body>
+</html>
