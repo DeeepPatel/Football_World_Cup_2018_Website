@@ -15,12 +15,12 @@ public class WorldCup2018DB {
     @Autowired
     NamedParameterJdbcTemplate jdbc;
 
-    public void insertTeam(String name, String continent, Integer gamesPlayed, Integer gamesWon, Integer gamesDrawn, Integer gamesLost){
+    public void insertTeam(String teamName, String continent, Integer gamesPlayed, Integer gamesWon, Integer gamesDrawn, Integer gamesLost){
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 
-        String query = "INSERT INTO team(name, continent, gamesPlayed, gamesWon, gamesDrawn, gamesLost) VALUES(:name, :continent, :gamesPlayed, :gamesWon, :gamesDrawn, :gamesLost)";
-        namedParameters.addValue("teamName", name);
+        String query = "INSERT INTO team(teamName, continent, gamesPlayed, gamesWon, gamesDrawn, gamesLost) VALUES(:teamName, :continent, :gamesPlayed, :gamesWon, :gamesDrawn, :gamesLost)";
+        namedParameters.addValue("teamName", teamName);
         namedParameters.addValue("continent", continent);
         namedParameters.addValue("gamesPlayed", gamesPlayed);
         namedParameters.addValue("gamesWon", gamesWon);

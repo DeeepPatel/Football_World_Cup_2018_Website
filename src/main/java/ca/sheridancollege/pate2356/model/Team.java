@@ -15,9 +15,9 @@ public class Team implements Serializable {
     @NonNull
     private String teamName;
     private String continent;
-    private Integer numGamesPlayed;
-    private Integer numWon;
-    private Integer numDrawn;
-    private Integer numLost;
+    private Integer gamesPlayed;
+    private Integer gamesWon;
+    private Integer gamesDrawn;
+    private Integer gamesLost;
 
 }
