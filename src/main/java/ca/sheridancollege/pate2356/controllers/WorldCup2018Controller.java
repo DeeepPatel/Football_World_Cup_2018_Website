@@ -5,9 +5,7 @@ import ca.sheridancollege.pate2356.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -20,6 +18,7 @@ public class WorldCup2018Controller {
 
     @GetMapping("/")
     public String index(){
+        //mv.addObject("team", new Team());
         return "/home";
     }
 
@@ -43,5 +42,34 @@ public class WorldCup2018Controller {
         model.addAttribute("team", db.getTeams());
         return "/displayResults";
     }
+
+
+
+    @GetMapping("/deleteTeamById/{id}")
+    public String deleteTeamById(@PathVariable Long id, Model model){
+        db.deleteTeamById(id);
+        model.addAttribute("team", db.getTeams());
+        return "redirect:/deleteTeam";
+    }
+
+    @GetMapping("/deleteTeam")
+    public String deleteTeam(Model model){
+        model.addAttribute("team", db.getTeams());
+        return "/deleteTeam";
+    }
+
+
+    @GetMapping("/editTeam")
+    public String editTeam(Model model){
+        model.addAttribute("team", db.getTeams());
+        return "/editTeam";
+    }
+    @GetMapping("/editTeamById/{id}")
+    public String editTeamById(@PathVariable Long id, Model model){
+        db.editTeamById(id);
+        model.addAttribute("team", db.getTeams());
+        return "redirect:/editTeam";
+    }
+
 
 }

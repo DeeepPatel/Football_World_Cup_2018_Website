@@ -39,4 +39,16 @@ public class WorldCup2018DB {
         String query = "SELECT * FROM team";
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
     }
+
+    public void deleteTeamById(Long teamId){
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        String query = "DELETE FROM team WHERE teamId = :teamId";
+        namedParameters.addValue("teamId", teamId);
+
+        int rowsAffected = jdbc.update(query, namedParameters);
+        if (rowsAffected > 0)
+            System.out.println("Team record was deleted successfully");
+    }
 }

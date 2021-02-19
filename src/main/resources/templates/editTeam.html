@@ -6,5 +6,21 @@
 </head>
 <body>
 
+<h1>List of all the Teams: </h1>
+
+<table>
+    <tr><th>Team(Country)</th><th>Continent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Delete</th></tr>
+    <th:block th:each="t:${team}">
+        <tr><td th:text="${t.teamName}"></td>
+            <td th:text="${t.continent}"></td>
+            <td th:text="${t.gamesPlayed}"></td>
+            <td th:text="${t.gamesWon}"></td>
+            <td th:text="${t.gamesDrawn}"></td>
+            <td th:text="${t.gamesLost}"></td>
+            <td><a th:href="@{'updateTeamById/' + ${t.teamId}}">Update</a></td>
+        </tr>
+    </th:block>
+</table>
+
 </body>
 </html>
