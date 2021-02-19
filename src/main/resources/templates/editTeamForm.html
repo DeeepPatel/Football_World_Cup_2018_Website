@@ -5,31 +5,25 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Add a Team</h1>
 
-
+<h1>Edit the team</h1>
 <div>
     <hr>
 
-    <form method="post" th:action="@{/saveTeam}" th:object="${team}">
+    <form method="get" th:action="@{/modifyTeam}" th:object="${team}">
 
         <input type="hidden" th:field="*{teamId}">
         Team Name: <input type="text" th:field="*{teamName}" placeholder="Enter Team Name"><br>
-<!--        Continent: <input type="text" th:field="*{continent}" placeholder="Enter Team Continent"><br>-->
-        <select name="continent">
-            <option th:each="place: ${team.continentList}" th:text="${place}" th:value="${place}" th:field="*{continent}" ></option>
-        </select><br>
+        Continent: <select name="continent">
+                        <option th:each="place: ${team.continentList}" th:text="${place}" th:value="${place}" th:field="*{continent}" ></option>
+                   </select><br>
         Games Played: <input type="number" th:field="*{gamesPlayed}" placeholder="Enter Amount of Games Played"><br>
         Games Won: <input type="number" th:field="*{gamesWon}" placeholder="Enter Amount of Games Won"><br>
         Games Drawn: <input type="number" th:field="*{gamesDrawn}" placeholder="Enter Amount of Games Drawn"><br>
         Games Lost: <input type="number" th:field="*{gamesLost}" placeholder="Enter Amount of Games Lost"><br>
 
-        <input type="submit" value="Add Team">
+        <input type="submit" value="Update Team">
 
-    </form>
-
-    <form th:action="@{/displayResults}">
-        <input type="submit" value="DisplayResults">
     </form>
     <hr>
 

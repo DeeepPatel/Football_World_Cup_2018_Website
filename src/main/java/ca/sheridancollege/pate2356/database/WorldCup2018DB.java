@@ -51,4 +51,30 @@ public class WorldCup2018DB {
         if (rowsAffected > 0)
             System.out.println("Team record was deleted successfully");
     }
+
+    public void editTeamById(Team team){
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        String query = "UPDATE team SET teamName =:teamName, continent =:continent, gamesPlayed =:gamesPlayed, gamesWon =:gamesWon, gamesDrawn =:gamesDrawn, gamesLost =:gamesLost  WHERE teamId = :teamId";
+        namedParameters.addValue("teamId", team.getTeamId());
+        namedParameters.addValue("teamName", team.getTeamName());
+        namedParameters.addValue("continent", team.getContinent());
+        namedParameters.addValue("gamesPlayed", team.getGamesPlayed());
+        namedParameters.addValue("gamesWon", team.getGamesWon());
+        namedParameters.addValue("gamesDrawn", team.getGamesDrawn());
+        namedParameters.addValue("gamesLost", team.getGamesLost());
+
+        int rowsAffected = jdbc.update(query, namedParameters);
+        if (rowsAffected > 0)
+            System.out.println("Team record was updated successfully");
+    }
+
+    public List<Team> getTeamById(Long teamId){
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        String query = "SELECT * FROM team WHERE teamId =:teamId";
+        namedParameters.addValue("teamId",teamId);
+        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
+    }
 }

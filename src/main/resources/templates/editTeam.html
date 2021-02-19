@@ -17,7 +17,7 @@
             <td th:text="${t.gamesWon}"></td>
             <td th:text="${t.gamesDrawn}"></td>
             <td th:text="${t.gamesLost}"></td>
-            <td><a th:href="@{'updateTeamById/' + ${t.teamId}}">Update</a></td>
+            <td><a th:href="@{'editTeamById/' + ${t.teamId}}">Update</a></td>
         </tr>
     </th:block>
 </table>

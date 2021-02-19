@@ -16,6 +16,7 @@ public class WorldCup2018Controller {
 
     ModelAndView mv;
 
+
     @GetMapping("/")
     public String index(){
         //mv.addObject("team", new Team());
@@ -24,7 +25,8 @@ public class WorldCup2018Controller {
 
     //Works
     @PostMapping("/saveTeam")
-    public String processTeam(@ModelAttribute Team team){
+    public String processTeam(@ModelAttribute Team team, @RequestParam String continent){
+        team.setContinent(continent);
         db.insertTeam(team.getTeamName(), team.getContinent(), team.getGamesPlayed(), team.getGamesWon(), team.getGamesDrawn(), team.getGamesLost());
         return "redirect:displayResults";
     }
@@ -46,9 +48,8 @@ public class WorldCup2018Controller {
 
 
     @GetMapping("/deleteTeamById/{id}")
-    public String deleteTeamById(@PathVariable Long id, Model model){
+    public String deleteTeamById(@PathVariable Long id){
         db.deleteTeamById(id);
-        model.addAttribute("team", db.getTeams());
         return "redirect:/deleteTeam";
     }
 
@@ -64,11 +65,21 @@ public class WorldCup2018Controller {
         model.addAttribute("team", db.getTeams());
         return "/editTeam";
     }
+
+    @GetMapping("/modifyTeam")
+    public String modifyTeam(@ModelAttribute Team team, Model model, @RequestParam String continent){
+        team.setContinent(continent);
+        db.editTeamById(team);
+        model.addAttribute("team", team);
+        return "redirect:/editTeam";
+    }
+
     @GetMapping("/editTeamById/{id}")
     public String editTeamById(@PathVariable Long id, Model model){
-        db.editTeamById(id);
-        model.addAttribute("team", db.getTeams());
-        return "redirect:/editTeam";
+        Team team;
+        team = db.getTeamById(id).get(0);
+        model.addAttribute("team", team);
+        return "/editTeamForm";
     }
 
 
