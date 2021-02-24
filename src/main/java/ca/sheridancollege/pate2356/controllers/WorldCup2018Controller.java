@@ -1,6 +1,6 @@
 package ca.sheridancollege.pate2356.controllers;
 
-import ca.sheridancollege.pate2356.database.WorldCup2018DB;
+import ca.sheridancollege.pate2356.database.DatabaseAccess;
 import ca.sheridancollege.pate2356.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,13 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class WorldCup2018Controller {
 
     @Autowired
-    WorldCup2018DB db;
+    DatabaseAccess db;
 
     ModelAndView mv;
+
+    String sortNumber = "0";
 
 
     @GetMapping("/")
@@ -28,7 +32,7 @@ public class WorldCup2018Controller {
     public String processTeam(@ModelAttribute Team team, @RequestParam String continent){
         team.setContinent(continent);
         db.insertTeam(team.getTeamName(), team.getContinent(), team.getGamesPlayed(), team.getGamesWon(), team.getGamesDrawn(), team.getGamesLost());
-        return "redirect:displayResults";
+        return "redirect:addTeam";
     }
 
     //Works
@@ -41,8 +45,19 @@ public class WorldCup2018Controller {
     //Works
     @GetMapping("/displayResults")
     public String displayResults(Model model){
-        model.addAttribute("team", db.getTeams());
-        return "/displayResults";
+        if (sortNumber.equals("points")){
+            model.addAttribute("team", db.sortTeamByPoints());
+        }
+        else if (sortNumber.equals("continent")){
+            model.addAttribute("team", db.sortTeamByContinent());
+        }
+        else if (sortNumber.equals("name")){
+            model.addAttribute("team", db.sortTeamByName());
+        }
+        else{
+            model.addAttribute("team", db.getTeams());
+        }
+        return "displayResults";
     }
 
 
@@ -80,6 +95,12 @@ public class WorldCup2018Controller {
         team = db.getTeamById(id).get(0);
         model.addAttribute("team", team);
         return "/editTeamForm";
+    }
+
+    @GetMapping("/sortTeam")
+    public String sortTeam(Model model, @RequestParam String sort){
+        sortNumber = sort;
+        return "redirect:displayResults";
     }
 
 

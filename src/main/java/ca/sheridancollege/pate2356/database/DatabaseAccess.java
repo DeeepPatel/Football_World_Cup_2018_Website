@@ -10,10 +10,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class WorldCup2018DB {
+public class DatabaseAccess {
 
     @Autowired
     NamedParameterJdbcTemplate jdbc;
+
 
     public void insertTeam(String teamName, String continent, Integer gamesPlayed, Integer gamesWon, Integer gamesDrawn, Integer gamesLost){
 
@@ -75,6 +76,27 @@ public class WorldCup2018DB {
 
         String query = "SELECT * FROM team WHERE teamId =:teamId";
         namedParameters.addValue("teamId",teamId);
+        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
+    }
+
+    public List<Team> sortTeamByPoints(){
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        String query = "SELECT * FROM team ORDER BY (gamesWon * 3 + gamesDrawn) DESC";
+        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
+    }
+
+    public List<Team> sortTeamByName(){
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        String query = "SELECT * FROM team ORDER BY (teamName)";
+        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
+    }
+
+    public List<Team> sortTeamByContinent(){
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        String query = "SELECT * FROM team ORDER BY (continent)";
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
     }
 }

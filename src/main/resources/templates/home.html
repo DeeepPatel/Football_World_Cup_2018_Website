@@ -5,24 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-
-<form th:action="@{/addTeam}">
-    <input type="submit" value="Add Team">
-</form>
-
-<form th:action="@{/displayResults}">
-    <input type="submit" value="Display Results">
-</form>
-
-<form th:action="@{/deleteTeam}">
-    <input type="submit" value="Delete Team">
-</form>
-
-<form th:action="@{/editTeam}">
-    <input type="submit" value="Edit Team">
-</form>
+<div th:fragment="header">
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/addTeam}">Add Team</a>
+    <a th:href="@{/editTeam}">Edit Team</a>
+    <a th:href="@{/deleteTeam}">Delete Team</a>
+    <a th:href="@{/displayResults}">Display Results</a>
+</div>
 
 
 
+
+
+<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
 </body>
 </html>

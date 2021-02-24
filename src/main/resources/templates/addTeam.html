@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <h1>Add a Team</h1>
 
 
@@ -15,8 +16,7 @@
 
         <input type="hidden" th:field="*{teamId}">
         Team Name: <input type="text" th:field="*{teamName}" placeholder="Enter Team Name"><br>
-<!--        Continent: <input type="text" th:field="*{continent}" placeholder="Enter Team Continent"><br>-->
-        <select name="continent">
+        Continent: <select name="continent">
             <option th:each="place: ${team.continentList}" th:text="${place}" th:value="${place}" th:field="*{continent}" ></option>
         </select><br>
         Games Played: <input type="number" th:field="*{gamesPlayed}" placeholder="Enter Amount of Games Played"><br>
@@ -34,5 +34,7 @@
     <hr>
 
 </div>
+
+<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
 </body>
 </html>

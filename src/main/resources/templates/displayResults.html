@@ -6,10 +6,11 @@
 </head>
 <body>
 
+
 <h1>List of all the Teams: </h1>
 
 <table>
-    <tr><th>Team(Country)</th><th>Continent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th></tr>
+    <tr><th>Team(Country)</th><th>Continent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
     <th:block th:each="t:${team}">
         <tr><td th:text="${t.teamName}"></td>
             <td th:text="${t.continent}"></td>
@@ -17,13 +18,32 @@
             <td th:text="${t.gamesWon}"></td>
             <td th:text="${t.gamesDrawn}"></td>
             <td th:text="${t.gamesLost}"></td>
+            <td th:text="${t.gamesWon * 3 + t.gamesDrawn}"></td>
         </tr>
     </th:block>
 </table>
 
-<form th:action="@{/deleteTeam}">
-    <input type="submit" value="Delete Team">
+
+
+
+
+
+<form th:action="@{/sortTeam}">
+    <input type="radio" name="sort" value="name">Name
+
+    <input type="radio" name="sort" value="continent">Continent
+
+    <input type="radio" name="sort" value="points">Points
+
+    <input type="submit" value="Sort">
 </form>
 
+
+
+
+
+
+
+<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
 </body>
 </html>
