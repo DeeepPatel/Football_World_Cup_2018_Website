@@ -2,9 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="fragment" th:insert="supplement.html :: header"></div>
 
 
 <h1>List of all the Teams: </h1>
@@ -29,7 +34,7 @@
 
 
 <form th:action="@{/sortTeam}">
-    <input type="radio" name="sort" value="name">Name
+    <input type="radio" name="sort" value="name" checked>Name
 
     <input type="radio" name="sort" value="continent">Continent
 
@@ -44,6 +49,6 @@
 
 
 
-<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
+<footer th:replace="supplement.html :: footer"></footer>
 </body>
 </html>

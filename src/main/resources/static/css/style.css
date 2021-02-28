@@ -1,0 +1,75 @@
+/*-- Reset --*/
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+  background: linear-gradient(134deg, #5c2774, #436aac 50%, #637ffd);
+
+}
+
+#banner{
+  background: ;
+}
+
+.navbar-brand{
+  color: white;
+
+}
+.navbar{
+  background: linear-gradient(to right, #212529b3, #21252952);
+  letter-spacing: .2rem;
+  box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .3);
+}
+
+
+.nav-item{
+  color: rgb(189,215,255);
+  font-size: 15px;
+}
+.nav-link{
+  color: #bdd7ff!important;
+}
+
+.nav-link:hover{
+  color: white!important;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+
+}
+
+@keyframes fadeIn {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+
+
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: 32px auto auto auto;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  opacity: 1;
+  animation: fade 5s linear;
+}
+@keyframes fade {
+  0%,100% {opacity: .0}
+  50% {opacity: 1}
+}
+

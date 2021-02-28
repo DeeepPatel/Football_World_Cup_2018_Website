@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="fragment" th:insert="supplement.html :: header"></div>
 
-<h1>Add a Team</h1>
-
-
-<div>
-    <hr>
-
-    <form method="post" th:action="@{/saveTeam}" th:object="${team}">
-
-        <input type="hidden" th:field="*{teamId}">
-        Team Name: <input type="text" th:field="*{teamName}" placeholder="Enter Team Name"><br>
-        Continent: <select name="continent">
+<section id="banner">
+    <h1>Add a Team</h1>
+    <div>
+        <form method="post" th:action="@{/saveTeam}" th:object="${team}">
+            <input type="hidden" th:field="*{teamId}">
+            Team Name: <input type="text" th:field="*{teamName}" placeholder="Enter Team Name"><br>
+            Continent: <select name="continent">
             <option th:each="place: ${team.continentList}" th:text="${place}" th:value="${place}" th:field="*{continent}" ></option>
         </select><br>
-        Games Played: <input type="number" th:field="*{gamesPlayed}" placeholder="Enter Amount of Games Played"><br>
-        Games Won: <input type="number" th:field="*{gamesWon}" placeholder="Enter Amount of Games Won"><br>
-        Games Drawn: <input type="number" th:field="*{gamesDrawn}" placeholder="Enter Amount of Games Drawn"><br>
-        Games Lost: <input type="number" th:field="*{gamesLost}" placeholder="Enter Amount of Games Lost"><br>
+            Games Played: <input type="number" th:field="*{gamesPlayed}" placeholder="Enter Amount of Games Played"><br>
+            Games Won: <input type="number" th:field="*{gamesWon}" placeholder="Enter Amount of Games Won"><br>
+            Games Drawn: <input type="number" th:field="*{gamesDrawn}" placeholder="Enter Amount of Games Drawn"><br>
+            Games Lost: <input type="number" th:field="*{gamesLost}" placeholder="Enter Amount of Games Lost"><br>
 
-        <input type="submit" value="Add Team">
+            <input type="submit" value="Add Team">
+        </form>
+        <form th:action="@{/displayResults}">
+            <input type="submit" value="DisplayResults">
+        </form>
 
-    </form>
 
-    <form th:action="@{/displayResults}">
-        <input type="submit" value="DisplayResults">
-    </form>
-    <hr>
+    </div>
+</section>
 
-</div>
 
-<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
+
+<footer th:replace="supplement.html :: footer"></footer>
 </body>
 </html>

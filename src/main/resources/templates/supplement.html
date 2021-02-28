@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Supplement</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+<nav th:fragment="header" class="navbar navbar-light navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color: white; opacity: 70%; font-size: 15px" th:href="@{/}">WORLD CUP 2018</a>
+    </div>
+    <div class="container">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" th:href="@{/}"  ><strong>Home</strong></a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/addTeam}" ><strong>Add Team</strong></a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/editTeam}" ><strong>Edit Team</strong></a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/deleteTeam}" ><strong>Delete Team</strong></a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/displayResults}"><strong>Display Results</strong></a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
+
+
+
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!--&lt;!&ndash; Font Awesome &ndash;&gt;-->
+<!--<script src="js/all.min.js"></script>-->
+
 
 </body>
 </html>

@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="fragment" th:insert="supplement.html :: header"></div>
 
 
 <h1>List of all the Teams: </h1>
@@ -28,8 +33,7 @@ Search: <input type="text" id="search-input">
 
 
 
-<footer th:fragment="footer">Copyright &copy; 2021 by DEEP PATEL</footer>
-
+<footer th:replace="supplement.html :: footer"></footer>
 
 
 <script>
