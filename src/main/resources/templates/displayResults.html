@@ -8,40 +8,52 @@
     <link rel="stylesheet" th:href="@{~/css/style.css}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="cupBackground">
 <div class="fragment" th:insert="supplement.html :: header"></div>
 
 
-<h1>List of all the Teams: </h1>
 
-<table>
-    <tr><th>Team(Country)</th><th>Continent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
-    <th:block th:each="t:${team}">
-        <tr><td th:text="${t.teamName}"></td>
-            <td th:text="${t.continent}"></td>
-            <td th:text="${t.gamesPlayed}"></td>
-            <td th:text="${t.gamesWon}"></td>
-            <td th:text="${t.gamesDrawn}"></td>
-            <td th:text="${t.gamesLost}"></td>
-            <td th:text="${t.gamesWon * 3 + t.gamesDrawn}"></td>
-        </tr>
-    </th:block>
-</table>
+<div class="formTitle"><h1><strong>ALL TEAMS</strong></h1></div>
+
+<div class="formInput">
+    <table>
+        <tr><th>Team(Country)</th><th>Continent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
+        <th:block th:each="t:${team}">
+            <tr><td th:text="${t.teamName}"></td>
+                <td th:text="${t.continent}"></td>
+                <td th:text="${t.gamesPlayed}"></td>
+                <td th:text="${t.gamesWon}"></td>
+                <td th:text="${t.gamesDrawn}"></td>
+                <td th:text="${t.gamesLost}"></td>
+                <td th:text="${t.gamesWon * 3 + t.gamesDrawn}"></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div class="searchTitle"><h1>Sort</h1></div>
+    <div class="divInput">
+        <form th:action="@{/sortTeam}">
+
+            <h2 class="sortName">By Name:</h2>
+            <input class="radioInput" type="radio" name="sort" value="name" checked>
+
+            <h2 class="sortName">By Continent:</h2>
+            <input class="radioInput" type="radio" name="sort" value="continent">Continent
+
+            <h2 class="sortName">By Points:</h2>
+            <input class="radioInput" type="radio" name="sort" value="points">Points
+
+            <input class="customButton" type="submit" value="Sort">
+        </form>
+    </div>
+</div>
 
 
 
 
+</div>
 
 
-<form th:action="@{/sortTeam}">
-    <input type="radio" name="sort" value="name" checked>Name
-
-    <input type="radio" name="sort" value="continent">Continent
-
-    <input type="radio" name="sort" value="points">Points
-
-    <input type="submit" value="Sort">
-</form>
 
 
 

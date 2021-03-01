@@ -9,21 +9,14 @@ html, body {
 
 }
 
-#banner{
-  background: ;
-}
-
 .navbar-brand{
   color: white;
-
 }
 .navbar{
   background: linear-gradient(to right, #212529b3, #21252952);
   letter-spacing: .2rem;
   box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .3);
 }
-
-
 .nav-item{
   color: rgb(189,215,255);
   font-size: 15px;
@@ -31,25 +24,16 @@ html, body {
 .nav-link{
   color: #bdd7ff!important;
 }
-
 .nav-link:hover{
   color: white!important;
   animation-name: fadeIn;
   animation-duration: 2s;
-
 }
-
 @keyframes fadeIn {
   from {opacity: .4}
   to {opacity: 1}
 }
 
-
-
-
-
-.mySlides {display: none;}
-img {vertical-align: middle;}
 
 
 /* Slideshow container */
@@ -59,9 +43,41 @@ img {vertical-align: middle;}
   margin: 32px auto auto auto;
 }
 
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
 .active {
   background-color: #717171;
 }
+
 
 /* Fading animation */
 .fade {
@@ -72,4 +88,205 @@ img {vertical-align: middle;}
   0%,100% {opacity: .0}
   50% {opacity: 1}
 }
+
+#banner{
+  background-size: cover;
+  background: url("../images/stadium.jpg") center;
+}
+
+.formTitle{
+  width: 800px;
+  background: rgba(0, 0, 0, .8);
+  color: rgb(189, 215, 255);
+  opacity: 80%;
+  margin: 32px auto auto auto;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+  letter-spacing: .1rem;
+}
+
+.formInput{
+  background: rgba(0, 0, 0, .5);
+  width: 800px;
+  margin: auto auto 32px;
+  border-radius: 0px 0px 15px 15px;
+  box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .3);
+}
+
+form{
+  padding: 10px;
+}
+
+.name{
+  margin-left: 25px;
+  margin-top: 15px;
+  width: 125px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.teamInput{
+  position: relative;
+  left: 200px;
+  top: -42px;
+  line-height: 40px;
+  width: 532px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+  color: #555;
+}
+
+.teamContinent{
+  position: relative;
+  left: 200px;
+  top: -42px;
+  line-height: 40px;
+  width: 532px;
+  height: 40px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  overflow: hidden;
+}
+.teamContinent option{
+  font-size: 20px;
+}
+
+.customButton{
+  background-color: rgb(189, 215, 255) ;
+  display: block;
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  padding: 14px 110px;
+  outline: none;
+  color: black;
+  font-weight: bolder;
+  letter-spacing: .1rem;
+}
+
+.customButton:hover{
+  background-color: rgb(113, 151, 245);
+  animation-name: fadeButton;
+  animation-duration: 2s;
+}
+@keyframes fadeButton {
+  from {opacity: .8}
+  to {opacity: 1}
+}
+
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:25px;   /* Height of the footer */
+  background: rgba(0, 0, 0, .5);
+  color: white;
+  text-align: center;
+}
+
+table{
+  margin: 0 auto;
+  vertical-align: middle;
+  border-collapse: collapse;
+  width: 750px;
+  border: 1px solid white;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.2), -1px -1px 8px rgba(0,0,0,0.2);
+}
+
+tr{
+  transition: all .2s ease-in;
+}
+
+
+
+td{
+  padding: 12px;
+  color: white;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+th{
+  padding: 12px;
+  background-color: rgb(189, 215, 255);
+  color: black;
+}
+
+
+#cupBackground{
+  background-size: cover;
+  background: url("../images/background.jpg") center;
+}
+
+
+.divInput{
+  background: rgba(0, 0, 0, .3);
+  width: 800px;
+  margin: auto auto;
+  border-radius: 0px 0px 15px 15px;
+  box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .3);
+}
+
+.searchTitle{
+  width: 800px;
+  background: rgba(0, 0, 0, .3);
+  color: rgb(189, 215, 255);
+  opacity: 80%;
+  margin: 32px auto auto auto;
+  padding: 10px;
+  text-align: center;
+  letter-spacing: .1rem;
+}
+
+.searchName{
+  margin-left: 25px;
+  width: 125px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.searchInput{
+  position: relative;
+  left: 200px;
+  top: -42px;
+  line-height: 40px;
+  width: 532px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
+}
+
+.radioInput{
+  position: relative;
+  left: 200px;
+  top: -30px;
+  line-height: 40px;
+  width: 532px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
+}
+
+.sortName{
+  margin-left: 300px;
+  width: 125px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
 

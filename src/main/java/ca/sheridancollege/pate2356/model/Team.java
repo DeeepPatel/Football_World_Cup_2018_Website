@@ -18,7 +18,7 @@ public class Team implements Serializable {
     private Long teamId;
     @NonNull
     private String teamName;
-    private String continentList[] = {"Asia", "Europe", "N.America", "S.America", "Africa"};
+    private String continentList[] = {"Africa", "Asia", "Oceania", "Europe", "North America", "South America"};
     private String continent;
     private Integer gamesPlayed;
     private Integer gamesWon;

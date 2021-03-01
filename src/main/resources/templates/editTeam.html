@@ -9,26 +9,47 @@
     <link rel="stylesheet" th:href="@{~/css/style.css}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="cupBackground">
 <div class="fragment" th:insert="supplement.html :: header"></div>
 
 
-<h1>List of all the Teams: </h1>
 
-<table id="myTeams">
-    <tr><th>Team(Country)</th><th>Continent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Update</th></tr>
-    <th:block th:each="t:${team}" id="potato">
-        <tr id="rows"><td th:text="${t.teamName}"></td>
-            <td th:text="${t.continent}"></td>
-            <td th:text="${t.gamesPlayed}"></td>
-            <td th:text="${t.gamesWon}"></td>
-            <td th:text="${t.gamesDrawn}"></td>
-            <td th:text="${t.gamesLost}"></td>
-            <td><a th:href="@{'editTeamById/' + ${t.teamId}}">Update</a></td>
+<div class="formTitle"><h1><strong>EDIT TEAM</strong></h1></div>
+
+<div class="formInput">
+    <table id="myTeams">
+        <tr>
+            <th>Team(Country)</th>
+            <th>Continent</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Drawn</th>
+            <th>Lost</th>
+            <th></th>
         </tr>
-    </th:block>
-</table>
-Search: <input type="text" id="search-input">
+        <th:block th:each="t:${team}" id="potato">
+            <tr class="childRow" id="rows">
+                <td th:text="${t.teamName}"></td>
+                <td th:text="${t.continent}"></td>
+                <td th:text="${t.gamesPlayed}"></td>
+                <td th:text="${t.gamesWon}"></td>
+                <td th:text="${t.gamesDrawn}"></td>
+                <td th:text="${t.gamesLost}"></td>
+                <td><a th:href="@{'editTeamById/' + ${t.teamId}}">Update</a></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div class="searchTitle"><h1>Search</h1></div>
+    <div class="divInput">
+        <h2 class="searchName">Team Name:</h2>
+        <input class="searchInput" type="text" id="search-input" placeholder="Search for a team">
+    </div>
+
+</div>
+
+
+
 
 
 
