@@ -16,6 +16,7 @@ public class DatabaseAccess {
     NamedParameterJdbcTemplate jdbc;
 
 
+    //Function that will call a query to add team to database
     public void insertTeam(String teamName, String continent, Integer gamesPlayed, Integer gamesWon, Integer gamesDrawn, Integer gamesLost){
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -33,6 +34,7 @@ public class DatabaseAccess {
             System.out.println("Team record was added successfully");
     }
 
+    //Function that will call a query to list all the teams saved within the database
     public List<Team> getTeams(){
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -41,6 +43,7 @@ public class DatabaseAccess {
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
     }
 
+    //Function that will call a query to delete the team row by its hidden ID
     public void deleteTeamById(Long teamId){
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -53,6 +56,7 @@ public class DatabaseAccess {
             System.out.println("Team record was deleted successfully");
     }
 
+    //Function that will call a query to edit the team.
     public void editTeamById(Team team){
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -70,6 +74,7 @@ public class DatabaseAccess {
             System.out.println("Team record was updated successfully");
     }
 
+    //Function that will call a query to select a specific row according to the team ID
     public List<Team> getTeamById(Long teamId){
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -79,6 +84,7 @@ public class DatabaseAccess {
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
     }
 
+    //Function that will call a query to sort the points column by points
     public List<Team> sortTeamByPoints(){
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 
@@ -86,6 +92,7 @@ public class DatabaseAccess {
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
     }
 
+    //Function that will call a query to sort the points column by name
     public List<Team> sortTeamByName(){
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 
@@ -93,6 +100,7 @@ public class DatabaseAccess {
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Team>(Team.class));
     }
 
+    //Function that will call a query to sort the points column by continent
     public List<Team> sortTeamByContinent(){
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 

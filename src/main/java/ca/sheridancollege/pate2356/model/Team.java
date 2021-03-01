@@ -14,7 +14,7 @@ import java.util.List;
 public class Team implements Serializable {
 
 
-    //dont forget to add team image
+    //All the attributes required for the team Class
     private Long teamId;
     @NonNull
     private String teamName;
